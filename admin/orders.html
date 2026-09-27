@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>إدارة الطلبات | باب الحارة</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="../js/supabase-config.js"></script>
+  <script defer src="js/auth.js"></script>
+  <script defer src="js/orders.js"></script>
+</head>
+<body class="admin-dashboard-page">
+  <div class="admin-page-frame">
+    <header class="dashboard-header">
+      <a class="admin-brand" href="dashboard.html" aria-label="العودة إلى لوحة تحكم باب الحارة">
+        <span class="brand-mark" aria-hidden="true">ب</span>
+        <span><strong>باب الحارة</strong><small>إدارة المتجر</small></span>
+      </a>
+      <div class="admin-account">
+        <span class="admin-user-email" data-admin-email></span>
+        <a class="admin-button admin-button-quiet admin-dashboard-link" href="dashboard.html">لوحة التحكم</a>
+        <button class="admin-button admin-button-quiet" type="button" data-logout-button>
+          <span data-logout-label>تسجيل الخروج</span>
+          <span class="button-spinner" aria-hidden="true" hidden></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="product-admin-main" data-protected-content hidden>
+      <div class="product-page-heading">
+        <div><span class="login-kicker">متابعة المبيعات</span><h1>الطلبات</h1><p>عرض الطلبات وتفاصيلها وتحديث حالتها.</p></div>
+      </div>
+      <p class="admin-alert" data-orders-message role="status" aria-live="polite" hidden></p>
+      <section class="admin-panel order-list-panel" aria-labelledby="orders-title">
+        <div class="admin-panel-heading product-list-heading"><div><span class="login-kicker">طلبات المتجر</span><h2 id="orders-title">كل الطلبات</h2></div>
+          <div class="order-filters">
+            <label class="product-search">بحث برقم الطلب أو الاسم أو الهاتف<input type="search" data-order-search placeholder="ابحث في الطلبات" autocomplete="off"></label>
+            <label class="product-search">تصفية حسب الحالة<select data-status-filter><option value="">كل الحالات</option><option value="pending">قيد الانتظار</option><option value="confirmed">مؤكد</option><option value="processing">قيد التجهيز</option><option value="completed">مكتمل</option><option value="cancelled">ملغي</option></select></label>
+          </div>
+        </div>
+        <p class="admin-inline-message" data-list-message role="status" aria-live="polite">جارٍ تحميل الطلبات…</p>
+        <div class="managed-products order-list" data-order-list></div>
+      </section>
+    </main>
+
+    <main class="dashboard-check" data-auth-check aria-live="polite">
+      <span class="button-spinner" aria-hidden="true"></span>
+      <p>جارٍ التحقق من صلاحيات الإدارة…</p>
+    </main>
+  </div>
+
+  <dialog class="order-details-dialog" data-order-dialog aria-labelledby="order-detail-title">
+    <div class="order-dialog-heading"><div><span class="login-kicker">بيانات الطلب</span><h2 id="order-detail-title">تفاصيل الطلب</h2></div><button type="button" class="dialog-close" data-close-order aria-label="إغلاق">×</button></div>
+    <div data-order-detail-content></div>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Local config files may contain the public project URL/key; never put secrets here.
+.env
+.env.*
+!.env.example

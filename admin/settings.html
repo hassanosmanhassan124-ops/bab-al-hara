@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>إعدادات المتجر | باب الحارة</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="../js/supabase-config.js"></script>
+  <script defer src="js/auth.js"></script>
+  <script defer src="js/settings.js"></script>
+</head>
+<body class="admin-dashboard-page">
+  <div class="admin-page-frame">
+    <header class="dashboard-header">
+      <a class="admin-brand" href="dashboard.html" aria-label="العودة إلى لوحة التحكم">
+        <span class="brand-mark" aria-hidden="true">ب</span>
+        <span><strong>باب الحارة</strong><small>إدارة المتجر</small></span>
+      </a>
+      <div class="admin-account">
+        <span class="admin-user-email" data-admin-email></span>
+        <a class="admin-button admin-button-quiet admin-dashboard-link" href="dashboard.html">لوحة التحكم</a>
+        <button class="admin-button admin-button-quiet" type="button" data-logout-button>
+          <span data-logout-label>تسجيل الخروج</span>
+          <span class="button-spinner" aria-hidden="true" hidden></span>
+        </button>
+      </div>
+    </header>
+    <main class="product-admin-main" data-protected-content hidden>
+      <div class="product-page-heading">
+        <div><span class="login-kicker">إدارة المتجر</span><h1>إعدادات المتجر</h1><p>عدّل بيانات النشاط التجاري التي تظهر لزوار المتجر.</p></div>
+      </div>
+      <p class="admin-alert" data-settings-message role="status" aria-live="polite" hidden></p>
+      <section class="admin-panel product-editor" aria-labelledby="settings-form-title">
+        <div class="admin-panel-heading"><div><span class="login-kicker">البيانات العامة</span><h2 id="settings-form-title">معلومات المتجر والتواصل</h2></div></div>
+        <p class="admin-inline-message" data-settings-loading role="status">جارٍ تحميل الإعدادات…</p>
+        <form class="product-form" data-settings-form hidden>
+          <label class="admin-field"><span>اسم المتجر</span><input name="store_name" type="text" maxlength="180"></label>
+          <label class="admin-field"><span>رقم WhatsApp (محلي أو دولي)</span><input name="whatsapp" type="text" maxlength="40" dir="ltr" placeholder="مثال: +20 1XXXXXXXXX" inputmode="tel"></label>
+          <label class="admin-field field-wide"><span>وصف المتجر</span><textarea name="store_description" rows="3" maxlength="2000"></textarea></label>
+          <label class="admin-field"><span>رقم الهاتف</span><input name="phone" type="text" maxlength="40" dir="ltr" inputmode="tel"></label>
+          <label class="admin-field"><span>العنوان</span><input name="address" type="text" maxlength="500"></label>
+          <label class="admin-field"><span>ساعات العمل</span><input name="working_hours" type="text" maxlength="300"></label>
+          <label class="admin-field"><span>Instagram (الرابط أو اسم المستخدم)</span><input name="instagram" type="text" maxlength="300" dir="ltr"></label>
+          <label class="admin-field"><span>TikTok (الرابط أو اسم المستخدم)</span><input name="tiktok" type="text" maxlength="300" dir="ltr"></label>
+          <label class="admin-field"><span>Facebook (الرابط أو اسم المستخدم)</span><input name="facebook" type="text" maxlength="300" dir="ltr"></label>
+          <label class="admin-field field-wide"><span>معلومات التوصيل</span><textarea name="delivery_information" rows="3" maxlength="2000"></textarea></label>
+          <label class="admin-field field-wide"><span>معلومات الدفع</span><textarea name="payment_information" rows="3" maxlength="2000"></textarea></label>
+          <div class="form-actions field-wide"><button class="admin-button" type="submit" data-save-settings>حفظ الإعدادات</button></div>
+        </form>
+      </section>
+    </main>
+    <main class="dashboard-check" data-auth-check aria-live="polite">
+      <span class="button-spinner" aria-hidden="true"></span>
+      <p data-settings-auth-message>جارٍ التحقق من صلاحيات الإدارة…</p>
+      <a href="login.html" data-settings-login hidden>العودة إلى تسجيل الدخول</a>
+    </main>
+  </div>
+</body>
+</html>

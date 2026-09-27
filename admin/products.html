@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>إدارة المنتجات | باب الحارة</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="../js/supabase-config.js"></script>
+  <script defer src="js/auth.js"></script>
+  <script defer src="js/products.js"></script>
+</head>
+<body class="admin-dashboard-page">
+  <div class="admin-page-frame">
+    <header class="dashboard-header">
+      <a class="admin-brand" href="dashboard.html" aria-label="العودة إلى لوحة تحكم باب الحارة">
+        <span class="brand-mark" aria-hidden="true">ب</span>
+        <span><strong>باب الحارة</strong><small>إدارة المتجر</small></span>
+      </a>
+      <div class="admin-account">
+        <span class="admin-user-email" data-admin-email></span>
+        <a class="admin-button admin-button-quiet admin-dashboard-link" href="dashboard.html">لوحة التحكم</a>
+        <button class="admin-button admin-button-quiet" type="button" data-logout-button>
+          <span data-logout-label>تسجيل الخروج</span>
+          <span class="button-spinner" aria-hidden="true" hidden></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="product-admin-main" data-protected-content hidden>
+      <div class="product-page-heading">
+        <div><span class="login-kicker">إدارة الكتالوج</span><h1>المنتجات</h1><p>إضافة المنتجات وتحديث بياناتها وحالتها.</p></div>
+        <a class="admin-button" href="#product-editor">إضافة منتج</a>
+      </div>
+      <p class="admin-alert" data-products-message role="status" aria-live="polite" hidden></p>
+
+      <section class="admin-panel product-editor" id="product-editor" aria-labelledby="product-form-title">
+        <div class="admin-panel-heading"><div><span class="login-kicker">بيانات المنتج</span><h2 id="product-form-title" data-product-form-title>إضافة منتج جديد</h2></div></div>
+        <p class="admin-inline-message" data-category-message role="status"></p>
+        <form class="product-form" data-product-form>
+          <label class="admin-field"><span>اسم المنتج <b>*</b></span><input name="name" type="text" maxlength="180" required></label>
+          <label class="admin-field"><span>الرابط المختصر (Slug) <b>*</b></span><input name="slug" type="text" maxlength="180" required dir="ltr" autocomplete="off"></label>
+          <label class="admin-field"><span>التصنيف <b>*</b></span><select name="category_id" data-category-select required disabled><option value="">جارٍ تحميل التصنيفات…</option></select></label>
+          <label class="admin-field"><span>السعر <b>*</b></span><input name="price" type="number" min="0" step="0.01" inputmode="decimal" required></label>
+          <label class="admin-field"><span>السعر السابق</span><input name="old_price" type="number" min="0" step="0.01" inputmode="decimal"></label>
+          <label class="admin-field"><span>الكمية في المخزون <b>*</b></span><input name="stock_quantity" type="number" min="0" step="1" inputmode="numeric" value="0" required></label>
+          <label class="admin-field field-wide"><span>الوصف</span><textarea name="description" rows="4" maxlength="4000"></textarea></label>
+          <div class="admin-field field-wide image-field">
+            <label for="product-image">صورة المنتج (اختياري)</label>
+            <input id="product-image" name="image" type="file" accept="image/jpeg,image/png,image/webp" data-image-input>
+            <small>JPG أو PNG أو WebP — الحد الأقصى 5 ميغابايت.</small>
+            <div class="image-preview" data-image-preview hidden><img alt="معاينة صورة المنتج" data-preview-image><button type="button" class="text-button" data-clear-image>إزالة الصورة المختارة</button></div>
+            <div class="current-image" data-current-image hidden><img alt="صورة المنتج الحالية" data-current-image-element><span>الصورة الحالية</span><button type="button" class="text-button" data-remove-current-image>إزالة الصورة الحالية</button></div>
+          </div>
+          <label class="admin-check"><input name="is_active" type="checkbox" checked><span>منتج نشط</span></label>
+          <label class="admin-check"><input name="is_featured" type="checkbox"><span>منتج مميز</span></label>
+          <div class="form-actions field-wide"><button class="admin-button" type="submit" data-save-product>حفظ المنتج</button><button class="admin-button admin-button-quiet" type="button" data-cancel-edit hidden>إلغاء التعديل</button></div>
+        </form>
+      </section>
+
+      <section class="admin-panel product-list-panel" aria-labelledby="product-list-title">
+        <div class="admin-panel-heading product-list-heading"><div><span class="login-kicker">كتالوج المتجر</span><h2 id="product-list-title">كل المنتجات</h2></div><label class="product-search">بحث بالاسم أو الرابط<input type="search" data-product-search placeholder="اكتب اسم المنتج أو slug" autocomplete="off"></label></div>
+        <p class="admin-inline-message" data-list-message role="status">جارٍ تحميل المنتجات…</p>
+        <div class="managed-products" data-product-list></div>
+      </section>
+    </main>
+
+    <main class="dashboard-check" data-auth-check aria-live="polite">
+      <span class="button-spinner" aria-hidden="true"></span>
+      <p>جارٍ التحقق من صلاحيات الإدارة…</p>
+    </main>
+  </div>
+</body>
+</html>

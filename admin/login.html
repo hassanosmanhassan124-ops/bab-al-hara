@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>دخول الإدارة | باب الحارة</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="../js/supabase-config.js"></script>
+  <script defer src="js/auth.js"></script>
+</head>
+<body class="admin-login-page">
+  <main class="login-layout">
+    <section class="login-card" aria-labelledby="login-title">
+      <a class="admin-brand" href="../index.html" aria-label="باب الحارة — الرئيسية">
+        <img class="admin-logo admin-login-logo" src="../assets/images/bab-al-hara-logo.png" alt="شعار باب الحارة">
+        <span><strong>باب الحارة</strong><small>Bab Al-Hara</small></span>
+      </a>
+      <span class="login-kicker">بوابة الإدارة</span>
+      <h1 id="login-title">تسجيل الدخول</h1>
+      <p class="login-description">أدخل بيانات حساب الإدارة للمتابعة.</p>
+      <p class="admin-alert" data-auth-message role="alert" aria-live="assertive" hidden></p>
+      <form class="login-form" data-login-form novalidate>
+        <label for="admin-email">البريد الإلكتروني</label>
+        <input id="admin-email" name="email" type="email" autocomplete="username" inputmode="email" required>
+        <label for="admin-password">كلمة المرور</label>
+        <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+        <button class="admin-button" type="submit" data-login-button>
+          <span data-button-label>دخول آمن</span>
+          <span class="button-spinner" aria-hidden="true" hidden></span>
+        </button>
+      </form>
+      <p class="login-footnote">هذا القسم مخصص للمستخدمين المخولين فقط.</p>
+      <a class="back-link" href="../index.html">العودة إلى المتجر</a>
+    </section>
+  </main>
+</body>
+</html>

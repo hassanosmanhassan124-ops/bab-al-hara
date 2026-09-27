@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>لوحة التحكم | باب الحارة</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="../js/supabase-config.js"></script>
+  <script defer src="js/auth.js"></script>
+  <script defer src="js/dashboard.js"></script>
+</head>
+<body class="admin-dashboard-page">
+  <div class="admin-page-frame">
+    <header class="dashboard-header">
+      <a class="admin-brand" href="../index.html" aria-label="باب الحارة — الرئيسية">
+        <img class="admin-logo" src="../assets/images/bab-al-hara-logo.png" alt="شعار باب الحارة">
+        <span><strong>باب الحارة</strong><small>إدارة المتجر</small></span>
+      </a>
+      <div class="admin-account">
+        <span class="admin-user-email" data-admin-email></span>
+        <button class="admin-button admin-button-quiet" type="button" data-logout-button>
+          <span data-logout-label>تسجيل الخروج</span>
+          <span class="button-spinner" aria-hidden="true" hidden></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="dashboard-main" data-protected-content hidden>
+      <div class="dashboard-welcome">
+        <span class="login-kicker">مساحة الإدارة</span>
+        <h1>لوحة تحكم باب الحارة</h1>
+        <p>مرحباً بك. يمكنك إدارة المنتجات والتصنيفات والعروض والطلبات من هذه اللوحة.</p>
+      </div>
+      <p class="admin-alert" data-dashboard-message role="alert" aria-live="polite" hidden></p>
+      <section class="admin-section" aria-labelledby="admin-sections-title">
+        <h2 id="admin-sections-title">أقسام المتجر</h2>
+        <div class="admin-nav-grid">
+          <a class="admin-nav-card" href="products.html"><span>▣</span><h3>المنتجات</h3><small>إدارة المنتجات</small></a>
+          <a class="admin-nav-card" href="categories.html"><span>▦</span><h3>التصنيفات</h3><small>إدارة التصنيفات</small></a>
+          <a class="admin-nav-card" href="offers.html"><span>%</span><h3>العروض</h3><small>إدارة العروض الترويجية</small></a>
+          <a class="admin-nav-card" href="orders.html"><span>▤</span><h3>الطلبات</h3><small>متابعة طلبات العملاء</small></a>
+          <a class="admin-nav-card" href="settings.html"><span>⚙</span><h3>إعدادات المتجر</h3><small>بيانات المتجر والتواصل</small></a>
+        </div>
+      </section>
+    </main>
+
+    <main class="dashboard-check" data-auth-check aria-live="polite">
+      <span class="button-spinner" aria-hidden="true"></span>
+      <p data-auth-check-message>جارٍ التحقق من جلسة الإدارة…</p>
+      <a href="login.html" data-check-login hidden>العودة إلى تسجيل الدخول</a>
+    </main>
+  </div>
+</body>
+</html>
